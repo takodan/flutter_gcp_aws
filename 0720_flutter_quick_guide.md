@@ -60,36 +60,96 @@ https://docs.flutter.dev/ui/layout
 ## container (similar to CSS box model)
 ```dart
 // 第一層Container
-body: Container(
-    // 內容物置中
-    alignment: Alignment.topCenter,
-    // 大小 500 x 500
-    width: 500, height: 500,
-    // 外距50 
-    margin: EdgeInsets.all(50),
-    // 填滿blue
-    color: Colors.blue,
-    child: Container(
-        width: 300,
-        height: 600,
-        // 外距上100, 使得height最多是400
-        margin: EdgeInsets.only(top: 100),
-        // 內距50, 使第三層最多是250*350
-        padding: EdgeInsets.all(50),
-        color: Colors.red,
-        // 第三層 Container
-        child: Container(
-            // 上一層沒有alignment無法固定width, height
-            // 會填滿250*350
-            width: 10,
-            height: 10,
-            color: Colors.orange,
-        ),
-    ),
-),
+return Scaffold(
+  body: Container(
+      // 內容物置中
+      alignment: Alignment.topCenter,
+      // 大小 500 x 500
+      width: 500, height: 500,
+      // 外距50 
+      margin: EdgeInsets.all(50),
+      // 填滿blue
+      color: Colors.blue,
+      child: Container(
+          width: 300,
+          height: 600,
+          // 外距上100, 使得height最多是400
+          margin: EdgeInsets.only(top: 100),
+          // 內距50, 使第三層最多是250*350
+          padding: EdgeInsets.all(50),
+          color: Colors.red,
+          // 第三層 Container
+          child: Container(
+              // 上一層沒有alignment無法固定width, height
+              // 會填滿250*350
+              width: 10,
+              height: 10,
+              color: Colors.orange,
+          ),
+      ),
+  ),
+);
 ```
 ## row, column
-## Expend, SingleChildScrollView, ListVew
+```dart
+return Scaffold(
+  // 垂直擺放Widget設置Column，Children參數可以有多個Widget // row 同理
+  body: Column(
+    children: [
+      Container(
+        child: Text(
+          "大頭照預留區",
+        ),
+      ),
+      Container(
+        child: Text(
+          "簡介",
+        ),
+      ),
+      Container(
+        child: Text(
+          "座右銘",
+        ),
+      ),
+    ],
+  ),
+);
+```
+## Expened, SingleChildScrollView, ListView
+#### Expened
+```dart
+body: Column(
+  children: [
+    // Expanded可以讓Widget按比例擠在一個視窗內
+    Expanded(
+      child: Container(
+```
+#### SingleChildScrollView
+```dart
+// SingleChildScrollView可以讓超過畫面的部分，以滾動檢視
+body: SingleChildScrollView(
+  child: Column(
+```
+#### ListView
+```dart
+return Drawer(
+  // 使用 ListView 顯示系列資料
+  // 或使用ListView.builder等捲動到資料時才載入
+  child: ListView(
+    children: [
+      ListTile(
+        title: const Text("公司官網"),
+      ),
+      ListTile(
+        title: const Text("搶先看"),
+      ),
+      ListTile(
+        title: const Text("未來必備"),
+      )
+    ],
+  ),
+);
+```
 
 ## routes
 in main.dart
