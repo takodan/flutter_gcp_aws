@@ -1,4 +1,4 @@
-# flutter quick start
+# flutter quick start guide
 
 ## 03 section 2: one screen
 1. main.dart  
